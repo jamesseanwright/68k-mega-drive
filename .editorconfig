@@ -1,0 +1,10 @@
+root = true
+
+[*]
+end_of_line = lf
+
+[{*.asm}]
+charset = utf-8
+indent_style = tabs
+indent_size = 4
+trim_trailing_whitespace = true
