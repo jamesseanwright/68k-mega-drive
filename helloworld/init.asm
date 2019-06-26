@@ -131,7 +131,7 @@ EntryPoint:
 
 .CopyPSG:
     move.b (a0)+, 0x00C00011
-    dbra d0, .Copy
+    dbra d0, .CopyPSG
 
     move.l #VDPRegisters, a0 ; Load address of register table into a0
     move.l #0x18, d0         ; 24 registers to write

@@ -1,13 +1,15 @@
     include 'init.asm'
 
-__main:    
-    move.l 0xC0000003, 0x00C00004 ; Set up VDP to write to CRAM address 0x0000
+__main:
+    move.w #0x8F02, 0x00C00004   ; Set autoincrement to 2 bytes(???)
+    move.l #0xC0000003, 0x00C00004 ; Set up VDP to write to CRAM address 0x0000
     lea Palette, a0 ; Load palette address into a0
     move.l #0x07, d0 ; Store palette longword size into d0
 
-.Loop:
+.PortTransfer:
     move.l (a0)+, 0x00C00000    ; Move data to VDP port and increment source address
-    dbra d0, .Loop              ; stop iterating if all of palette has been covered
+    dbra d0, .PortTransfer  ; stop iterating if all of palette has been sent
+
     move.w #0x8708, 0x00C00004  ; Set BG to Palette colour 9
 
 Palette:
