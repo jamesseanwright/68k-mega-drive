@@ -1,7 +1,7 @@
     include 'init.asm'
 
 __main:
-    move.w #0x8F02, 0x00C00004   ; Set autoincrement to 2 bytes(???)
+    move.w #0x8F02, 0x00C00004      ; Set autoincrement to 2 bytes(???)
     move.l #0xC0000003, 0x00C00004  ; Set up VDP to write to CRAM address 0x0000
     lea Palette, a0                 ; Load palette address into a0
     move.l #0x07, d0                ; Store palette longword size into d0
